@@ -1,8 +1,14 @@
 class Solution(object):
     def missingNumber(self, nums):
-        n = len(nums)
+        nums.sort()
 
-        total = n*(n+1)//2
-        asum = sum(nums)
+        left = 0 
+        right = len(nums)-1
 
-        return total - asum
+        while left <=right:
+            mid = (left+right)//2
+            if nums[mid]==mid:
+                left = mid +1
+            else:
+                right = mid -1
+        return left            
