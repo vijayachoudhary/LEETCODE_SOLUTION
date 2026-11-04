@@ -1,0 +1,19 @@
+class Solution(object):
+    def longestOnes(self, nums, k):
+        
+        left = 0 
+        
+        zero_total = 0
+        ans = 0
+
+        for right in range(len(nums)):
+            if nums[right] == 0:
+                zero_total+=1
+
+            while zero_total >k:
+                if nums[left] == 0:
+                    zero_total -=1
+                left +=1
+
+            ans = max(ans,right-left+1)        
+        return ans
